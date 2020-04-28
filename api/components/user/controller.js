@@ -42,10 +42,27 @@ module.exports = (injectedStore) => {
 
     return store.upsert(TABLE, user);
   }
+
+  function follow(from, to) {
+    return store.upsert(TABLE + '_follow', {
+      user_from: from,
+      user_to: to,
+    });
+  }
+
+  function following(idUser) {
+    const join = {};
+    join[TABLE] = 'user_to';
+    console.log(join);
+    const query = { user_from: idUser };
+    return store.query(TABLE + '_follow', query, join);
+  }
   return {
     list,
     get,
     remove,
     add,
+    follow,
+    following,
   };
 };

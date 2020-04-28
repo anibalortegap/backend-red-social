@@ -6,9 +6,9 @@
  *
  * Este archivo nos va permiter realizar la exportacion de lo que tengamos en el controlador de user
  */
-const store = require("../../../store/dummy");
+const store = require('../../../store/mysql');
 
-const ctrl = require("./controller");
+const ctrl = require('./controller');
 
 //Convertir nuestro objeto CTR en una Funcion y le injectamos nuestro Store
 module.exports = ctrl(store);
